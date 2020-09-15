@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using WebApplication3.Data;
 using WebApplication3.Models;
 using WebApplication3.Repository;
 
@@ -22,7 +23,8 @@ namespace WebApplication3.Controllers
         [Route("")]
         public IEnumerable<Dept> GetAllBooks()
         {
-          return  deprepo.GetAll();
+                                       var lst = deprepo.GetAll();
+                  return  deprepo.GetAll();
         }
         [HttpGet]
         [Route("{bookId}")]

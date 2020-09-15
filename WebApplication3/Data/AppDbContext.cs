@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Castle.Core.Configuration;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +17,17 @@ namespace WebApplication3.Data
         }
         DbSet<Dept> depts { get; set; }
         DbSet<Employee> employes { get; set; }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseLazyLoadingProxies();
+        DbSet<Blog> blogs { get; set; }
+        DbSet<Post> posts { get; set; }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+     => optionsBuilder
+         .UseLazyLoadingProxies();
+        
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+           
+                
         }
     }
 }

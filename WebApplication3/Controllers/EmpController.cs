@@ -22,10 +22,11 @@ namespace WebApplication3.Controllers
         [Route("")]
         public IEnumerable<Employee> GetAllBooks()
         {
-            var lst = deprepo.GetAll();
-             
-           
-            return deprepo.GetAll();
+            var lst = deprepo.GetAll().SelectMany(x=>x.dept.employes);
+
+
+
+            return lst;
         }
     }
 }
